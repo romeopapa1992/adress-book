@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8FED0A7E2AA1B2050048A3CC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FED0A7D2AA1B2050048A3CC /* main.cpp */; };
+		8FFA708A2AA21FF8006FFE66 /* Uzytkownik.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FFA70892AA21FF8006FFE66 /* Uzytkownik.cpp */; };
+		8FFA708F2AA2323B006FFE66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FFA708E2AA2323B006FFE66 /* main.cpp */; };
+		8FFA70912AA232D3006FFE66 /* ks-strukt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FFA70902AA232D3006FFE66 /* ks-strukt.cpp */; };
+		8FFA70942AA23A9F006FFE66 /* KsiazkaAdresowa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FFA70932AA23A9F006FFE66 /* KsiazkaAdresowa.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,12 @@
 
 /* Begin PBXFileReference section */
 		8FED0A7A2AA1B2050048A3CC /* Adresowa-seminarium */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Adresowa-seminarium"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FED0A7D2AA1B2050048A3CC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8FFA70892AA21FF8006FFE66 /* Uzytkownik.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Uzytkownik.cpp; sourceTree = "<group>"; };
+		8FFA708B2AA22001006FFE66 /* Uzytkownik.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uzytkownik.h; sourceTree = "<group>"; };
+		8FFA708E2AA2323B006FFE66 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8FFA70902AA232D3006FFE66 /* ks-strukt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "ks-strukt.cpp"; sourceTree = "<group>"; };
+		8FFA70922AA23A22006FFE66 /* KsiazkaAdresowa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KsiazkaAdresowa.h; sourceTree = "<group>"; };
+		8FFA70932AA23A9F006FFE66 /* KsiazkaAdresowa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KsiazkaAdresowa.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +49,12 @@
 		8FED0A712AA1B2050048A3CC = {
 			isa = PBXGroup;
 			children = (
-				8FED0A7C2AA1B2050048A3CC /* Adresowa-seminarium */,
+				8FFA70932AA23A9F006FFE66 /* KsiazkaAdresowa.cpp */,
+				8FFA70922AA23A22006FFE66 /* KsiazkaAdresowa.h */,
+				8FFA70902AA232D3006FFE66 /* ks-strukt.cpp */,
+				8FFA708E2AA2323B006FFE66 /* main.cpp */,
+				8FFA708B2AA22001006FFE66 /* Uzytkownik.h */,
+				8FFA70892AA21FF8006FFE66 /* Uzytkownik.cpp */,
 				8FED0A7B2AA1B2050048A3CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,14 +65,6 @@
 				8FED0A7A2AA1B2050048A3CC /* Adresowa-seminarium */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8FED0A7C2AA1B2050048A3CC /* Adresowa-seminarium */ = {
-			isa = PBXGroup;
-			children = (
-				8FED0A7D2AA1B2050048A3CC /* main.cpp */,
-			);
-			path = "Adresowa-seminarium";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +124,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FED0A7E2AA1B2050048A3CC /* main.cpp in Sources */,
+				8FFA70942AA23A9F006FFE66 /* KsiazkaAdresowa.cpp in Sources */,
+				8FFA708A2AA21FF8006FFE66 /* Uzytkownik.cpp in Sources */,
+				8FFA70912AA232D3006FFE66 /* ks-strukt.cpp in Sources */,
+				8FFA708F2AA2323B006FFE66 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
