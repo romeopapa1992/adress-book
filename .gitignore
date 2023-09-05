@@ -1,0 +1,7 @@
+#Pliki do zignorowania
+ks-strukt
+ks-strukt.cpp
+ks-strukt.dSYM/
+main
+main.dSYM/
+tempCodeRunnerFile.cpp
