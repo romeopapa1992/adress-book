@@ -1,9 +1,5 @@
 #include "PlikZUzytkownikami.h"
 
-PlikZUzytkownikami::PlikZUzytkownikami()
-{
-    nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
-}
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
@@ -22,10 +18,10 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
         {
             plikTekstowy << endl << liniaZDanymiUzytkownika ;
         }
+         plikTekstowy.close();
     }
     else
         cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
-    plikTekstowy.close();
 }
 
 bool PlikZUzytkownikami:: czyPlikJestPusty()
