@@ -1,9 +1,11 @@
 #include "PlikZUzytkownikami.h"
-
+#include <fstream>
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
     string liniaZDanymiUzytkownika = "";
+    fstream plikTekstowy;
+
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
 
     if (plikTekstowy.good() == true)
@@ -18,14 +20,17 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
         {
             plikTekstowy << endl << liniaZDanymiUzytkownika ;
         }
-         plikTekstowy.close();
+        plikTekstowy.close();
     }
     else
         cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
 }
 
-bool PlikZUzytkownikami:: czyPlikJestPusty()
+bool PlikZUzytkownikami::czyPlikJestPusty()
 {
+    fstream plikTekstowy;
+    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
+
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
         return true;
@@ -36,7 +41,7 @@ bool PlikZUzytkownikami:: czyPlikJestPusty()
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
 {
     string liniaZDanymiUzytkownika = "";
-    
+
     liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
     liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
     liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
@@ -45,11 +50,12 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 }
 
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
-{ 
+{
     Uzytkownik uzytkownik;
     vector <Uzytkownik> uzytkownicy;
     string daneJednegoUzytkownikaOddzielonePionowymiKreskami  = "";
 
+    fstream plikTekstowy;
     plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
@@ -95,4 +101,35 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
         }
     }
     return uzytkownik;
+}
+
+void PlikZUzytkownikami::aktualizujHasloUzytkownika(Uzytkownik uzytkownik)
+{
+    vector<Uzytkownik> uzytkownicy = wczytajUzytkownikowZPliku();
+
+    for (int i = 0; i < uzytkownicy.size(); i++)
+    {
+        if (uzytkownicy[i].pobierzId() == uzytkownik.pobierzId())
+        {
+            uzytkownicy[i].ustawHaslo(uzytkownik.pobierzHaslo());
+            break;
+        }
+    }
+
+    ofstream plikTekstowy(nazwaPlikuZUzytkownikami.c_str(), ios::out | ios::trunc);
+
+    if (plikTekstowy.is_open())
+    {
+        for (int i = 0; i < uzytkownicy.size(); i++)
+        {
+            plikTekstowy << zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownicy[i]);
+            if (i < uzytkownicy.size() - 1)
+                plikTekstowy << endl;
+        }
+        plikTekstowy.close();
+    }
+    else
+    {
+        cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
+    }
 }
