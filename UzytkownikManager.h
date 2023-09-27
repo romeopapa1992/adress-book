@@ -1,35 +1,31 @@
 #ifndef UZYTKOWNIKMANAGER_H
 #define UZYTKOWNIKMANAGER_H
-
 #include <iostream>
 #include <vector>
-#include <windows.h>
 #include <fstream>
 #include <sstream>
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
 
-using namespace std;
-
 class UzytkownikManager
 {
+    PlikZUzytkownikami plikZUzytkownikami;
     int idZalogowanegoUzytkownika;
-    vector <Uzytkownik> uzytkownicy;
+    vector<Uzytkownik>uzytkownicy;
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
-    PlikZUzytkownikami plikZUzytkownikami;
 
-    public:
-        UzytkownikManager(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
-        void rejestracjaUzytkownika();
-        void wypiszWszystkichUzytkownikow();
-        void wczytajUzytkownikowZPliku();
-        void logowanieUzytkownika();
-        void zmianaHasla();
-        void wylogowanieUzytkownika();
+public:
+    UzytkownikManager(string nazwaPlikuZUzytkownikami);
+    void rejestracjaUzytkownika();
+    void wypiszWszystkichUzytkownikow();
+    void logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika();
+    void wylogowanieUzytkownika();
+    int pobierzIdZalogowanegoUzytkownika();
+    bool czyUzytkownikJestZalogowany();
 };
 
 #endif
-
