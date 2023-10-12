@@ -1,4 +1,0 @@
-1|Andrzej|Andrzej321|
-2|Aga|Aga123|
-3|Asia|Asia321|
-4|Andzia|Andzia321|
