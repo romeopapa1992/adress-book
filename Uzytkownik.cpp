@@ -1,10 +1,5 @@
 #include "Uzytkownik.h"
 
-Uzytkownik::Uzytkownik()
-{
-
-}
-
 void Uzytkownik::ustawId(int noweId)
 {
     if(noweId>=0)

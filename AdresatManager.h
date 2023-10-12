@@ -6,20 +6,18 @@
 
 class AdresatManager
 {
-    const int IDZALOGOWANEGOUZYTKOWNIKA;
+    int idZalogowanegoUzytkownika;
     vector<Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
-public:
-    AdresatManager(string nazwaPlikuZAdresatami,int idZalogowanegoUzytkownika)
-        :plikZAdresatami(nazwaPlikuZAdresatami),IDZALOGOWANEGOUZYTKOWNIKA(idZalogowanegoUzytkownika)
-    {
-        adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(IDZALOGOWANEGOUZYTKOWNIKA);
-    }
-    void dodajAdresata();
     Adresat podajDaneNowegoAdresata();
-    void wyswietlWszystkichAdresatow();
     void wyswietlDaneAdresata(Adresat adresat);
-    void wczytajAdresatowZPliku(int idZalogowanegoUzytkownika);
+public:
+
+    AdresatManager(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    void podajIdZalogowanegoUzytkownika(int noweId);
 };
 
 #endif

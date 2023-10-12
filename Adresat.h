@@ -15,10 +15,6 @@ class Adresat
     string email;
     string adres;
 public:
-    Adresat(int id = 0,int idUzytkownika = 0,string imie = "",string nazwisko = "",string numerTelefonu = "",string email = "",string adres = "")
-    {
-
-    }
     void ustawIdUzytkownika(int noweIdUzytkownika);
     void ustawId(int noweId);
     void ustawImie(string noweImie);

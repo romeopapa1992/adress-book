@@ -45,6 +45,24 @@ int main()
 
     while (true)
     {
+        wybor = wybierzOpcjeZMenuGlownego();
+
+        switch (wybor)
+        {
+        case '1':
+            ksiazkaAdresowa.rejestracjaUzytkownika();
+            break;
+        case '2':
+            ksiazkaAdresowa.logowanieUzytkownika();
+            break;
+        case '9':
+            exit(0);
+        default:
+            cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+            system("pause");
+            break;
+        }
+
         if (!ksiazkaAdresowa.czyUzytkownikJestZalogowany())
         {
             wybor = wybierzOpcjeZMenuGlownego();

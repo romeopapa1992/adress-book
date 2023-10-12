@@ -1,23 +1,21 @@
 #include "KsiazkaAdresowa.h"
 
-
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
     uzytkownikManager.rejestracjaUzytkownika();
 }
 
-void KsiazkaAdresowa::logowanieUzytkownika()
-{
-    uzytkownikManager.logowanieUzytkownika();
-    if(uzytkownikManager.czyUzytkownikJestZalogowany())
-    {
-        adresatManager= new AdresatManager(NAZWAPLIKUZADRESATAMI,uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
-    }
-}
-
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 {
     uzytkownikManager.wypiszWszystkichUzytkownikow();
+}
+
+void KsiazkaAdresowa::logowanieUzytkownika()
+{
+    uzytkownikManager.logowanieUzytkownika();
+    int idZalogowanegoUzytkownika = uzytkownikManager.pobierzIdZalogowanegoUzytkownika();
+    adresatManager.podajIdZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
+    adresatManager.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 }
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
@@ -28,23 +26,16 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
 void KsiazkaAdresowa::wylogowanieUzytkownika()
 {
     uzytkownikManager.wylogowanieUzytkownika();
-    delete adresatManager;
-    adresatManager = NULL;
 }
 
 void KsiazkaAdresowa::dodajAdresata()
 {
-    adresatManager->dodajAdresata();
+    adresatManager.dodajAdresata();
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
 {
-    adresatManager->wyswietlWszystkichAdresatow();
-}
-
-void KsiazkaAdresowa::wczytajAdresatowZPliku()
-{
-    adresatManager->wczytajAdresatowZPliku(uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
+    adresatManager.wyswietlWszystkichAdresatow();
 }
 
 bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()

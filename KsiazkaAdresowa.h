@@ -6,30 +6,21 @@
 
 class KsiazkaAdresowa
 {
-
     UzytkownikManager uzytkownikManager;
-    AdresatManager *adresatManager;
-    const string NAZWAPLIKUZADRESATAMI;
-
+    AdresatManager adresatManager;
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami,string nazwaPlikuZAdresatami):
-        uzytkownikManager(nazwaPlikuZUzytkownikami),NAZWAPLIKUZADRESATAMI(nazwaPlikuZAdresatami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
+    : uzytkownikManager(nazwaPlikuZUzytkownikami), adresatManager(nazwaPlikuZAdresatami)
     {
-        adresatManager = NULL;
-    }
-    ~KsiazkaAdresowa()
-    {
-        delete adresatManager;
-        adresatManager = NULL;
-    }
+        uzytkownikManager.wczytajUzytkownikowZPliku();
+    };
     void rejestracjaUzytkownika();
-    void logowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
-    void wczytajAdresatowZPliku();
     bool czyUzytkownikJestZalogowany();
 };
 
