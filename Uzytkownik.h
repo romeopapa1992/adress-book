@@ -1,5 +1,6 @@
 #ifndef UZYTKOWNIK_H
 #define UZYTKOWNIK_H
+
 #include <iostream>
 
 using namespace std;
@@ -10,7 +11,6 @@ class Uzytkownik
     string login;
     string haslo;
 public:
-    //Uzytkownik();
     void ustawId(int noweId);
     void ustawLogin(string nowyLogin);
     void ustawHaslo(string noweHaslo);

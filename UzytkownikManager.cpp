@@ -1,6 +1,5 @@
 #include "UzytkownikManager.h"
 
-
 Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
@@ -45,9 +44,10 @@ int UzytkownikManager::pobierzIdNowegoUzytkownika()
 
 bool UzytkownikManager::czyIstniejeLogin(string login)
 {
-    for(int i =0;i<uzytkownicy.size();i++)
+    for(int i =0;i < uzytkownicy.size();i++)
     {
-        if(uzytkownicy[i].pobierzLogin()==login){
+        if(uzytkownicy[i].pobierzLogin()==login)
+        {
             cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
             return true;
         }
@@ -57,7 +57,7 @@ bool UzytkownikManager::czyIstniejeLogin(string login)
 
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
-    for(int i =0;i<uzytkownicy.size();i++)
+    for(int i =0; i<uzytkownicy.size();i++)
     {
        cout<<uzytkownicy[i].pobierzId()<<endl;
        cout<<uzytkownicy[i].pobierzLogin()<<endl;
@@ -65,53 +65,47 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikManager::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 void UzytkownikManager::logowanieUzytkownika()
 {
+
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
     cout << endl << "Podaj login: ";
     login = MetodyPomocnicze::wczytajLinie();
 
-    auto itr = uzytkownicy.begin();
-    for (; itr != uzytkownicy.end(); itr++)
+    vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
+    while (itr != uzytkownicy.end())
     {
-        if (itr->pobierzLogin() == login)
+        if (itr -> pobierzLogin() == login)
         {
-            idZalogowanegoUzytkownika = itr->pobierzId();
+            idZalogowanegoUzytkownika= itr -> pobierzId();
             break;
         }
-    }
-
-    if (itr == uzytkownicy.end())
-    {
-        cout << endl << "Nie ma u¿ytkownika z takim loginem" << endl << endl;
-        system("pause");
-        return;
+        itr++;
     }
 
     int iloscProb = 3;
     for (; iloscProb > 0; iloscProb--)
     {
         cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-        haslo = MetodyPomocnicze::wczytajLinie();
+        haslo = MetodyPomocnicze::wczytajLinie();;
 
-        if (itr->pobierzHaslo() == haslo)
+        if (itr -> pobierzHaslo() == haslo)
         {
             cout << endl << "Zalogowales sie." << endl << endl;
             system("pause");
-            return;
+            break;
         }
     }
 
     if (iloscProb == 0)
+    {
         cout << "Wprowadzono 3 razy bledne haslo." << endl;
         system("pause");
+        exit(0);//return;
+    }
+
 }
 
 void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
@@ -157,11 +151,10 @@ int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
 
 bool UzytkownikManager::czyUzytkownikJestZalogowany()
 {
-    if (idZalogowanegoUzytkownika>0)
+    if (idZalogowanegoUzytkownika > 0)
         return true;
-    else {
+    else
+    {
         return false;
     }
 }
-
-

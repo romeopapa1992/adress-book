@@ -20,28 +20,32 @@ Adresat AdresatManager::podajDaneNowegoAdresata()
 {
     Adresat adresat;
 
-    adresat.ustawId(1);
-    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
-    plikZAdresatami.wczytajIdOstatniegoAdresata(adresat.wczytajId());
+    string imie, nazwisko, numerTelefonu, email, adres;
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
-    cout << "Podaj imie : ";
-
-    adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
-    adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajImie()));
+    cout << "Podaj imie: ";
+    imie=MetodyPomocnicze::wczytajLinie();
+    imie= MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
 
     cout << "Podaj nazwisko: ";
-    adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
-    adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajNazwisko()));
+    nazwisko=MetodyPomocnicze::wczytajLinie();
+    nazwisko=MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
 
     cout << "Podaj numer telefonu: ";
-    adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
+    numerTelefonu=MetodyPomocnicze::wczytajLinie();
 
     cout << "Podaj email: ";
-    adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
+    email=MetodyPomocnicze::wczytajLinie();
 
     cout << "Podaj adres: ";
-    adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
+    adres=MetodyPomocnicze::wczytajLinie();
+
+    adresat.ustawImie(imie);
+    adresat.ustawNazwisko(nazwisko);
+    adresat.ustawNumerTelefonu (numerTelefonu);
+    adresat.ustawEmail(email);
+    adresat.ustawAdres(adres);
 
     return adresat;
 }
@@ -66,23 +70,18 @@ void AdresatManager::wyswietlWszystkichAdresatow()
     system("pause");
 }
 
-void AdresatManager::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
-{
-    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-}
-
 void AdresatManager::wyswietlDaneAdresata(Adresat adresat)
 {
-    cout << endl << "Id:                 " << adresat.wczytajId() << endl;
+    cout << endl << "Id:         " << adresat.wczytajIdAdresata() << endl;
     cout << "Imie:               " << adresat.wczytajImie() << endl;
-    cout << "Nazwisko:           " << adresat.wczytajNazwisko() << endl;
+    cout << "Nazwisko:           " << adresat.wczytajNazwisko()<< endl;
     cout << "Numer telefonu:     " << adresat.wczytajNumerTelefonu() << endl;
     cout << "Email:              " << adresat.wczytajEmail() << endl;
     cout << "Adres:              " << adresat.wczytajAdres() << endl;
 }
 
-void AdresatManager::podajIdZalogowanegoUzytkownika(int noweId)
-{
-    idZalogowanegoUzytkownika = noweId;
-}
 
+void AdresatManager::wczytajAdresatowZPliku(int idZalogowanegoUzytkownika)
+{
+    adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+}
