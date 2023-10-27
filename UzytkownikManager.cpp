@@ -44,7 +44,7 @@ int UzytkownikManager::pobierzIdNowegoUzytkownika()
 
 bool UzytkownikManager::czyIstniejeLogin(string login)
 {
-    for(int i =0;i < uzytkownicy.size();i++)
+    for(vector <Uzytkownik> :: size_type i =0; i < uzytkownicy.size();i++)
     {
         if(uzytkownicy[i].pobierzLogin()==login)
         {
@@ -57,7 +57,7 @@ bool UzytkownikManager::czyIstniejeLogin(string login)
 
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
-    for(int i =0; i<uzytkownicy.size();i++)
+    for(vector <Uzytkownik> :: size_type i = 0; i <uzytkownicy.size();i++)
     {
        cout<<uzytkownicy[i].pobierzId()<<endl;
        cout<<uzytkownicy[i].pobierzLogin()<<endl;
@@ -65,7 +65,8 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikManager::logowanieUzytkownika() {
+void UzytkownikManager::logowanieUzytkownika()
+{
     Uzytkownik uzytkownik;
     int iloscProb = 3;
     string loginUzytkownika, hasloUzytkownika;
@@ -73,13 +74,16 @@ void UzytkownikManager::logowanieUzytkownika() {
     cout << endl << "Podaj login: ";
     loginUzytkownika = MetodyPomocnicze::wczytajLinie();
 
-    for (int i = 0; i < uzytkownicy.size(); i++) {
-        if (uzytkownicy[i].pobierzLogin() == loginUzytkownika) {
+    for (vector <Uzytkownik> :: size_type i =0; i < uzytkownicy.size(); i++)
+        {
+        if (uzytkownicy[i].pobierzLogin() == loginUzytkownika)
+        {
             while (iloscProb > 0) {
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
                 hasloUzytkownika = MetodyPomocnicze::wczytajLinie();
 
-                if (uzytkownicy[i].pobierzHaslo() == hasloUzytkownika) {
+                if (uzytkownicy[i].pobierzHaslo() == hasloUzytkownika)
+                {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
                     system("pause");
