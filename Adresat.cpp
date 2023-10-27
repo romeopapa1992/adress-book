@@ -1,4 +1,4 @@
-# include "Adresat.h"
+#include "Adresat.h"
 
 void Adresat::ustawIdAdresata(int noweIdAdresata)
 {

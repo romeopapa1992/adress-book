@@ -33,6 +33,7 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 
     return liczbaInt;
 }
+
 char MetodyPomocnicze::wczytajZnak()
 {
     string wejscie = "";
@@ -59,6 +60,31 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
     {
         liczba += tekst[pozycjaZnaku];
         pozycjaZnaku ++;
+    }
+    return liczba;
+}
+
+int MetodyPomocnicze::podajIdWybranegoAdresata()
+{
+    int idWybranegoAdresata = 0;
+    cout << "Podaj numer ID Adresata: ";
+    idWybranegoAdresata  = wczytajLiczbeCalkowita();
+    return idWybranegoAdresata;
+}
+
+int MetodyPomocnicze::wczytajLiczbeCalkowita()
+{
+    string wejscie = "";
+    int liczba = 0;
+
+    while (true)
+    {
+        getline(cin, wejscie);
+
+        stringstream myStream(wejscie);
+        if (myStream >> liczba)
+            break;
+        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
     }
     return liczba;
 }

@@ -33,8 +33,12 @@ int main()
             {
             case '1': ksiazkaAdresowa.dodajAdresata(); break;
             case '2': ksiazkaAdresowa.wyswietlWszystkichAdresatow(); break;
-            case '3': ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika(); break;
-            case '4': ksiazkaAdresowa.wylogowanieUzytkownika(); break;
+            case '3': ksiazkaAdresowa.wyszukajAdresatowPoImieniu(); break;
+            case '4': ksiazkaAdresowa.wyszukajAdresatowPoNazwisku(); break;
+            case '5': ksiazkaAdresowa.usunAdresata(); break;
+            case '6': ksiazkaAdresowa.edytujAdresata(); break;
+            case '7': ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika(); break;
+            case '8': ksiazkaAdresowa.wylogowanieUzytkownika(); break;
             }
         }
     }
