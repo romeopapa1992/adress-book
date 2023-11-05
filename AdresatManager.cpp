@@ -16,40 +16,6 @@ void AdresatManager::dodajAdresata()
     system("pause");
 }
 
-Adresat AdresatManager::podajDaneNowegoAdresata()
-{
-    Adresat adresat;
-
-    string imie, nazwisko, numerTelefonu, email, adres;
-    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
-    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-
-    cout << "Podaj imie: ";
-    imie=MetodyPomocnicze::wczytajLinie();
-    imie= MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
-
-    cout << "Podaj nazwisko: ";
-    nazwisko=MetodyPomocnicze::wczytajLinie();
-    nazwisko=MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
-
-    cout << "Podaj numer telefonu: ";
-    numerTelefonu=MetodyPomocnicze::wczytajLinie();
-
-    cout << "Podaj email: ";
-    email=MetodyPomocnicze::wczytajLinie();
-
-    cout << "Podaj adres: ";
-    adres=MetodyPomocnicze::wczytajLinie();
-
-    adresat.ustawImie(imie);
-    adresat.ustawNazwisko(nazwisko);
-    adresat.ustawNumerTelefonu (numerTelefonu);
-    adresat.ustawEmail(email);
-    adresat.ustawAdres(adres);
-
-    return adresat;
-}
-
 void AdresatManager::wyswietlWszystkichAdresatow()
 {
     system("cls");
@@ -68,16 +34,6 @@ void AdresatManager::wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-}
-
-void AdresatManager::wyswietlDaneAdresata(Adresat adresat)
-{
-    cout << endl << "Id:         " << adresat.wczytajIdAdresata() << endl;
-    cout << "Imie:               " << adresat.wczytajImie() << endl;
-    cout << "Nazwisko:           " << adresat.wczytajNazwisko()<< endl;
-    cout << "Numer telefonu:     " << adresat.wczytajNumerTelefonu() << endl;
-    cout << "Email:              " << adresat.wczytajEmail() << endl;
-    cout << "Adres:              " << adresat.wczytajAdres() << endl;
 }
 
 void AdresatManager::wyszukajAdresatowPoImieniu()
@@ -110,14 +66,6 @@ void AdresatManager::wyszukajAdresatowPoImieniu()
     }
     cout << endl;
     system("pause");
-}
-
-void AdresatManager::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow)
-{
-    if (iloscAdresatow == 0)
-        cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
-    else
-        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }
 
 void AdresatManager::wyszukajAdresatowPoNazwisku()
@@ -155,7 +103,6 @@ void AdresatManager::wyszukajAdresatowPoNazwisku()
 int AdresatManager::usunAdresata()
 {
     int idUsuwanegoAdresata = 0;
-    int numerLiniiUsuwanegoAdresata = 0;
 
     system("cls");
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -187,7 +134,7 @@ int AdresatManager::usunAdresata()
             }
         }
     }
-    if (czyIstniejeAdresat == false)
+    if (!czyIstniejeAdresat)
     {
         cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
         system("pause");
@@ -200,7 +147,6 @@ void AdresatManager::edytujAdresata()
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
     string imie, nazwisko, numerTelefonu, email, adres;
 
@@ -258,11 +204,63 @@ void AdresatManager::edytujAdresata()
             }
         }
     }
-    if (czyIstniejeAdresat == false)
+    if (!czyIstniejeAdresat)
     {
         cout << endl << "Nie ma takiego adresata." << endl << endl;
     }
     system("pause");
+}
+
+Adresat AdresatManager::podajDaneNowegoAdresata()
+{
+    Adresat adresat;
+
+    string imie, nazwisko, numerTelefonu, email, adres;
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+
+    cout << "Podaj imie: ";
+    imie=MetodyPomocnicze::wczytajLinie();
+    imie= MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
+
+    cout << "Podaj nazwisko: ";
+    nazwisko=MetodyPomocnicze::wczytajLinie();
+    nazwisko=MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
+
+    cout << "Podaj numer telefonu: ";
+    numerTelefonu=MetodyPomocnicze::wczytajLinie();
+
+    cout << "Podaj email: ";
+    email=MetodyPomocnicze::wczytajLinie();
+
+    cout << "Podaj adres: ";
+    adres=MetodyPomocnicze::wczytajLinie();
+
+    adresat.ustawImie(imie);
+    adresat.ustawNazwisko(nazwisko);
+    adresat.ustawNumerTelefonu (numerTelefonu);
+    adresat.ustawEmail(email);
+    adresat.ustawAdres(adres);
+
+    return adresat;
+}
+
+void AdresatManager::wyswietlDaneAdresata(Adresat adresat)
+{
+    cout << endl << "Id:         " << adresat.wczytajIdAdresata() << endl;
+    cout << "Imie:               " << adresat.wczytajImie() << endl;
+    cout << "Nazwisko:           " << adresat.wczytajNazwisko()<< endl;
+    cout << "Numer telefonu:     " << adresat.wczytajNumerTelefonu() << endl;
+    cout << "Email:              " << adresat.wczytajEmail() << endl;
+    cout << "Adres:              " << adresat.wczytajAdres() << endl;
+}
+
+void AdresatManager::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow)
+{
+    if (iloscAdresatow == 0)
+        cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
+    else
+        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }
 
 char AdresatManager::wybierzOpcjeZMenuEdycja()

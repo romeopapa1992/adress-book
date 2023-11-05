@@ -24,12 +24,12 @@ public:
         uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
         idZalogowanegoUzytkownika = 0;
     }
+    int pobierzIdZalogowanegoUzytkownika();
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
-    int pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
 };
 

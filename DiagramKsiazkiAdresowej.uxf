@@ -1,0 +1,116 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>488</x><y>24</y><w>232</w><h>264</h></coordinates><panel_attributes>KsiazkaAdresowa
+--
+- uzytkownikManager: UzytkownikManager
+-*adresatManager: AdresatManager
+- NAZWA_PLIKU_Z_ADRESATAMI: const string
+--
++ KsiazkaAdresowa()
++ ~KsiazkaAdresowa()
++ wybierzOpcjeZMenuGlownego(): char
++ wybierzOpcjeZMenuUzytkownika(): char
++ rejestracjaUzytkownika(): void
++ wypiszWszystkichUzytkownikow(): void
++ logowanieUzytkownika(): void
++ zmianaHaslaZalogowanegoUzytkownika(): void
++ wylogowanieUzytkownika(): void
++ dodajAdresata(): void
++ wyswietlWszystkichAdresatow(): void
++ czyUzytkownikJestZalogowany(): bool
++ wyszukajAdresatowPoImieniu(): void
++ wyszukajAdresatowPoNazwisku(): void
++ usunAdresata(): void
++ edytujAdresata(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>824</x><y>40</y><w>224</w><h>208</h></coordinates><panel_attributes>AdresatManager
+--
+ - ID_ZALOGOWANEGO_UZYTKOWNIKA: const int
+ - adresaci: vector&lt;Adresat&gt; 
+ - plikZAdresatami: PlikZAdresatami
+--
++ AdresatManager()
++ dodajAdresata(): void 
++ wyswietlWszystkichAdresatow(): void
++ wyszukajAdresatowPoImieniu(): void
++ wyszukajAdresatowPoNazwisku(): void
++ usunAdresata(): int
++ edytujAdresata(): void
+
+- podajDaneNowegoAdresata(): Adresat
+- wyswietlDaneAdresata(Adresat adresat): void 
+- wyswietlIloscWyszukanychAdresatow(): void
+- wybierzOpcjeZMenuEdycja(): char</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>64</x><y>48</y><w>232</w><h>216</h></coordinates><panel_attributes>UzytkownikManager
+--
+- plikZUzytkownikami: PlikZUzytkownikami 
+- idZalogowanegoUzytkownika: int
+- uzytkownicy: vector&lt;Uzytkownik&gt;
+--
++ UzytkownikManager()
++ pobierzIdZalogowanegoUzytkownika(): int
++ rejestracjaUzytkownika(): void 
++ wypiszWszystkichUzytkownikow(): void 
++ logowanieUzytkownika(): void 
++ zmianaHaslaZalogowanegoUzytkownika(): void 
++ wylogowanieUzytkownika(): void 
++ czyUzytkownikJestZalogowany(): bool 
+
+- podajDaneNowegoUzytkownika(): Uzytkownik 
+- pobierzIdNowegoUzytkownika(): int
+- czyIstniejeLogin(): bool 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>560</y><w>384</w><h>112</h></coordinates><panel_attributes>PlikZUzytkownikami
+--
++ PlikZUzytkownikami()
++ dopiszUzytkownikaDoPliku(): void 
++ wczytajUzytkownikowZPliku(): vector &lt;Uzytkownik&gt; 
++ zapiszWszystkichUzytkownikowDoPliku(): void 
+
+- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(): string  
+- pobierzDaneUzytkownika(): Uzytkownik </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>792</x><y>560</y><w>376</w><h>248</h></coordinates><panel_attributes>PlikZAdresatami
+--
+- adresaci: vector &lt;Adresat&gt;
+- idOstatniegoAdresata: int 
+--
++ PlikZAdresatami()
++ pobierzIdOstatniegoAdresata(): int 
++ dopiszAdresataDoPliku(): void 
++ wczytajAdresatowZalogowanegoUzytkownikaZPliku(): vector&lt;Adresat&gt; 
++ usunWybranegoAdresataZPliku(): void 
++ zaktualizujDaneWybranegoAdresata(): void 
++ edytujWybranaLinieWPliku(): void 
+
+- zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(): string 
+- pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskamii: int 
+- pobierzDaneAdresata(): Adresat 
+- pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(): int 
+- usunPlik(): void 
+- zmienNazwePliku(): void 
+- podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(): void
+- pobierzZPlikuIdOstatniegoAdresata(): int 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>64</x><y>352</y><w>160</w><h>64</h></coordinates><panel_attributes>Uzytkownik
+--
+- id: int
+- login: string
+- haslo: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>360</y><w>128</w><h>112</h></coordinates><panel_attributes>Adresat
+--
+- idAdresata: int
+- idUzytkownika: int
+- imie: string
+- nazwisko: string
+- numerTelefonu: string
+- email: string
+- adres: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>496</x><y>576</y><w>232</w><h>80</h></coordinates><panel_attributes>PlikTekstowy
+--
+- NAZWA_PLIKU: const string
+--
++ PlikTekstowy()
++ pobierzNazwePliku(): string
++ czyPlikJestPusty(): bool
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>368</y><w>360</w><h>128</h></coordinates><panel_attributes>MetodyPomocnicze
+--
++ konwersjaIntNaString(): static string 
++ wczytajLinie(): static string 
++ zamienPierwszaLitereNaDuzaAPozostaleNaMale(): static string 
++ konwersjaStringNaInt(): static int
++ wczytajZnak(): static char
++ pobierzLiczbe(): static string 
++ podajIdWybranegoAdresata(): static int 
++ wczytajLiczbeCalkowita(): static int 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>128</y><w>216</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>240</y><w>160</w><h>216</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;180;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>256</y><w>136</w><h>200</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;230;150;230</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>456</y><w>136</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;130;10;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>456</y><w>160</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;130;180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>136</x><y>256</y><w>24</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>240</y><w>24</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>256</y><w>24</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;380</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>240</y><w>24</w><h>336</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;400</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>616</y><w>88</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>616</y><w>80</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>712</x><y>128</y><w>128</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>464</y><w>24</w><h>112</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>136</x><y>408</y><w>24</w><h>168</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element></diagram>
